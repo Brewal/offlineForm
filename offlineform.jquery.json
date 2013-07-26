@@ -1,5 +1,5 @@
 {
-    "name": "offlineForm",
+    "name": "offlineform",
     "title": "jQuery offlineForm",
     "description": "Stores the forms in the localStorage when the browser is offline and synchronizes them when the browser is back online.",
     "keywords": [
@@ -21,8 +21,6 @@
             "email": "br@oziolab.fr",
             "url": "http://oziolab.fr/"
         }
-    ],
-    "licenses": [
     ],
     "bugs" : "https://github.com/Brewal/offlineForm/issues",
     "homepage": "https://github.com/Brewal/offlineForm",
