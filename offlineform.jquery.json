@@ -15,6 +15,12 @@
         "name": "Brewal RENAULT - Oziolab",
         "url": "http://oziolab.fr/"
     },
+    "licenses": [
+        {
+          "type": "MIT",
+          "url": "https://github.com/Brewal/offlineForm/blob/master/LICENSE.md"
+        }
+    ],
     "maintainers": [
         {
             "name": "Brewal RENAULT",
