@@ -9,7 +9,11 @@ Stores the forms in the localStorage when the browser is offline and synchronize
     `````html
     <script type="text/javascript" src="path/to/offlineform.jquery.js"></script>
     `````
-
+    Or the minified version : 
+    `````html
+    <script type="text/javascript" src="path/to/offlineform.jquery.min.js"></script>
+    `````
+    
 2. Initialize the plugin. Here are a full initialization with all default options and events handler :  
 
     `````javascript
