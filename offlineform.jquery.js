@@ -1,7 +1,7 @@
 /**
  * offlineForm
  * 
- * @version 0.1
+ * @version 0.1.0
  * @example $('form.offline').offlineForm();
  * @author Brewal RENAULT http://oziolab.fr/
  * 
