@@ -1,0 +1,33 @@
+{
+    "name": "offlineForm",
+    "title": "jQuery offlineForm",
+    "description": "Stores the forms in the localStorage when the browser is offline and synchronizes them when the browser is back online.",
+    "keywords": [
+        "form",
+        "offline",
+        "ajax",
+        "html5",
+        "synchronize",
+        "localStorage"
+    ],
+    "version": "0.1.0",
+    "author": {
+        "name": "Brewal RENAULT - Oziolab",
+        "url": "http://oziolab.fr/"
+    },
+    "maintainers": [
+        {
+            "name": "Brewal RENAULT",
+            "email": "br@oziolab.fr",
+            "url": "http://oziolab.fr/"
+        }
+    ],
+    "licenses": [
+    ],
+    "bugs" : "https://github.com/Brewal/offlineForm/issues",
+    "homepage": "https://github.com/Brewal/offlineForm",
+    "docs": "https://github.com/Brewal/offlineForm",
+    "dependencies": {
+        "jquery": ">=1.9"
+    }
+}
