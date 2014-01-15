@@ -27,6 +27,7 @@ Stores the forms in the localStorage when the browser is offline and synchronize
             onSync: null,
             onStorage: null,
             onError: null,
+            beforeOnlineAjaxSend: null,
             onlineAjaxCallback: null
         });
     });
