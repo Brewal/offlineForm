@@ -30,6 +30,8 @@
         onStorage: null,
         // called when an error occured during syncing
         onError: null,
+        // called before sending the ajax request when online
+        beforeOnlineAjaxSend: null,
         // callback for online ajax sending
         onlineAjaxCallback: null
     };
@@ -41,6 +43,9 @@
         // if navigator is online, we just send the form
         if (navigator.onLine) {
             if (p.onlineAjaxSend) {
+                if (p.beforeOnlineAjaxSend) {
+                    p.beforeOnlineAjaxSend();
+                }
                 $.ajax({
                     type: form.attr('method'),
                     url: form.attr('action'),
