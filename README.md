@@ -3,6 +3,10 @@ offlineForm
 
 Stores the forms in the localStorage when the browser is offline and synchronizes them when the browser is back online
 
+### jsFiddle Demo
+
+http://jsfiddle.net/Brewal/ZZwdD/
+
 ### How to use it
 1. Include the plugin in your head tag :  
 
@@ -22,6 +26,7 @@ Stores the forms in the localStorage when the browser is offline and synchronize
             key: "offlineForm",
             classname: "offlineForm",
             onlineAjaxSend: false,
+            autoSync: true,
             beforeSync: null,
             afterSync: null,
             onSync: null,
@@ -40,8 +45,11 @@ Stores the forms in the localStorage when the browser is offline and synchronize
     * *classname* : CSS classname to add to the form.
         default : "offlineForm"
         type : [String]
-    * *onlineAjaxSend* : Wether to send the form with ajax when online or not.
+    * *onlineAjaxSend* : wether to send the form with ajax when online or not.
         default : false
+        type : [Boolean]
+    * *autoSync* : if true, send automatically the forms when an online event is detected
+        default : true
         type : [Boolean]
     
     **Events** (all events are "null" by default)
@@ -70,7 +78,7 @@ Stores the forms in the localStorage when the browser is offline and synchronize
         arguments :  
         * response : the response of the server  
 
-3. Trigger the synchronization whenever you want. Here on connection event : 
+3. If you choose to define *autoSync* to false, you can trigger a sync by yourself : 
 
    `````javascript
    eventOnline = function(){
