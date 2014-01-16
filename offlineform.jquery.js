@@ -78,7 +78,7 @@
         // retreive data waiting to be sent
         data = JSON.parse(localStorage[p.key]);
 
-        // on supprime les "null"
+        // removes empty records
         if(data.length) {
             $.each(data, function(index, value){
                 if(value === null) {
@@ -126,7 +126,7 @@
             total = data.length;
 
             if (data !== undefined && total > 0) {
-                // remove empty records
+                // removes empty records
                 $.each(data, function(index, value){
                     if(value === null) {
                         data.splice(index, 1);
