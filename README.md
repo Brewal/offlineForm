@@ -18,7 +18,7 @@ http://jsfiddle.net/Brewal/ZZwdD/
     <script type="text/javascript" src="path/to/offlineform.jquery.min.js"></script>
     `````
     
-2. Initialize the plugin. Here are a full initialization with all default options and events handler :  
+2. Initialize the plugin. Here is a full initialization with all default options and events handler :  
 
     `````javascript
     $(document).ready(function(){
@@ -39,46 +39,46 @@ http://jsfiddle.net/Brewal/ZZwdD/
     });
     `````
     **Options**  
-    * *key* : localStorage key name of the plugin.
-        default : "offlineForm"
-        type : [String]
-    * *classname* : CSS classname to add to the form.
-        default : "offlineForm"
-        type : [String]
+    * `key` : localStorage key name of the plugin.  
+        * default : `offlineForm`  
+        * type : `String`
+    * *classname* : CSS classname to add to the form.  
+        * default : `offlineForm`  
+        * type : `String`  
     * *onlineAjaxSend* : wether to send the form with ajax when online or not.
-        default : false
-        type : [Boolean]
+        * default : `false`
+        * type : `Boolean`
     * *autoSync* : if true, send automatically the forms when an online event is detected
-        default : true
-        type : [Boolean]
+        * default : `true`
+        * type : `Boolean`
     
     **Events** (all events are "null" by default)
     * *beforeSync* : called before syncing all local data.  
         arguments :  
-        * total : number of forms to synchronize  
+        * `total` : number of forms to synchronize  
     * *afterSync* : called when forms are all synchronized.  
         arguments :  
-        * total : number of forms synchronized  
+        * `total` : number of forms synchronized  
     * *onSync* : called when a single form is syncrhonized.  
         arguments :  
-        * progress : number of forms already sent  
-        * total : number of forms to synchronize  
-        * response : the response of the server 
+        * `progress` : number of forms already sent  
+        * `total` : number of forms to synchronize  
+        * `response` : the response of the server 
     * *beforeStorage* : called before storing a form in the localStorage
         arguments : 
-        * total : number of forms to synchronize once back online
-        * data : localStorage data
+        * `total` : number of forms to synchronize once back online
+        * `data` : localStorage data
     * *onStorage* : called when offline and when a form is submited  
         arguments :  
-        * total : number of forms to synchronize once back online
-        * data : localStorage data
+        * `total` : number of forms to synchronize once back online
+        * `data` : localStorage data
     * *onError* : called when an error occured during syncing (404, 500, ...)  
     * *beforeOnlineAjaxSend* : called before sending the ajax request when online
     * *onlineAjaxCallback* : callback for online ajax sending (useful when onlineAjaxSend is set to true)  
         arguments :  
-        * response : the response of the server  
+        * `response` : the response of the server  
 
-3. If you choose to define *autoSync* to false, you can trigger a sync by yourself : 
+3. If you choose to define `autoSync` to `false`, you can trigger a sync by yourself : 
 
    `````javascript
    eventOnline = function(){
