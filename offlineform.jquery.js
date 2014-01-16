@@ -26,7 +26,9 @@
         afterSync: null,
         // called when a form is syncrhonized
         onSync: null,
-        // called when offline and a form is submited
+        // called when offline before saving in localStorage
+        beforeStorage: null,
+        // called when offline after saving in localStorage
         onStorage: null,
         // called when an error occured during syncing
         onError: null,
@@ -85,14 +87,16 @@
             });
         }
 
+        if (p.beforeStorage) p.beforeStorage(data.length, data);
         // add the serialized form to the data
         data.push({
             action: action,
-            urlEncoded: form.serialize()
+            urlEncoded: form.serialize(),
+            method: form.attr('method')
         });
 
         // call the callback onStorage
-        if (p.onStorage) p.onStorage(data.length);
+        if (p.onStorage) p.onStorage(data.length, data);
 
         // store the new data
         localStorage[p.key] = JSON.stringify(data);
@@ -122,7 +126,7 @@
             total = data.length;
 
             if (data !== undefined && total > 0) {
-                // on supprime les "null"
+                // remove empty records
                 $.each(data, function(index, value){
                     if(value === null) {
                         data.splice(index, 1);
@@ -135,26 +139,27 @@
 
                 // send forms one by one
                 // if it succeed, we remove the form from the localStorage
+                var newData = JSON.parse(JSON.stringify(data));
                 $.each(data, function(index, form) {
                     if (form) {
                         $.ajax({
-                            type: "POST",
+                            type: form.method,
                             url: form.action,
                             data: form.urlEncoded,
                             async: false,
                             success: function(ret) {
                                 if (p.onSync) p.onSync((index+1), total, ret);
-                                data.splice(index, 1);
+                                newData.splice(0, 1);
                                 // store the new data.
                                 // It should be an empty array if no error occured.
-                                localStorage[p.key] = JSON.stringify(data);
+                                localStorage[p.key] = JSON.stringify(newData);
 
                                 if (data.length === 0 && p.afterSync) p.afterSync(total);
                             }
                         }).fail(function(e) {
                             // we remove the form causing the issue
-                            data.splice(index, 1);
-                            localStorage[p.key] = JSON.stringify(data);
+                            newData.splice(0, 1);
+                            localStorage[p.key] = JSON.stringify(newData);
                             if (p.onError) p.onError(e);
                             return false;
                         });
