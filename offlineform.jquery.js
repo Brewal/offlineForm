@@ -1,14 +1,16 @@
 /**
  * offlineForm
  * 
- * @version 0.1.2
+ * @version 0.2
  * @author Brewal RENAULT http://oziolab.fr/
  * @link https://github.com/Brewal/offlineForm
  * 
  * This is a jQuery plugin for synchronizing forms when navigator is
- * offline. If it is, forms will be stored into localStorage, until an online 
- * event is detected. If it is not, forms are directly sent without any other
- * action done. 
+ * offline. 
+ * If it is offline, forms will be stored into localStorage until an online
+ * event is detected. Then the forms submited when offline are sent by ajax.
+ * If it is online, forms are directly sent without any other action done. 
+ * You have an option to send them with ajax anyway. 
  */
 (function($)
 {
@@ -20,6 +22,8 @@
         classname: "offlineForm",
         // if true, send the form with ajax
         onlineAjaxSend: false,
+        // if true, send automatically the forms when an online event is detected
+        autoSync: true,
         // called before syncing all local data
         beforeSync: null,
         // called when forms are synchronized
@@ -171,6 +175,18 @@
             return false;
         }
     };
+    
+    if (p.autoSync) {
+        var eventOnline = function() {
+            methods['sync']();
+        };
+        // Detect online event
+        if (window.addEventListener) {
+            window.addEventListener('online', eventOnline);
+        } else {
+            document.body.attachEvent('ononline', eventOnline);
+        }
+    }
     
     $.fn.offlineForm = function(methodOrOptions) {
         if ( methods[methodOrOptions] ) {
