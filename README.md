@@ -80,17 +80,46 @@ http://jsfiddle.net/Brewal/ZZwdD/
 
 3. If you choose to define `autoSync` to `false`, you can trigger a sync by yourself : 
 
-   `````javascript
-   eventOnline = function(){
-       $('#myForm').offlineForm('sync');
-   };
-   if(window.addEventListener) {
-       window.addEventListener('online', eventOnline);
-   } else {
-       document.body.attachEvent('ononline', eventOnline);
-   }
-   `````
-   
+    `````javascript
+    eventOnline = function(){
+        $('#myForm').offlineForm('sync');
+    };
+    if(window.addEventListener) {
+        window.addEventListener('online', eventOnline);
+    } else {
+        document.body.attachEvent('ononline', eventOnline);
+    }
+    `````
+
+### Quick example
+
+**HTML**
+
+`````html
+<form id="myForm" action="/some/path" method="post">
+    <label>Field1</label>
+    <input type="text" name="field1" />
+    
+    <input type="submit" value="Submit the form" />
+</form>
+`````
+
+**Javascript**
+
+`````javascript
+$(document).ready(function(){
+    $('#myForm').offlineForm({
+        onStorage: function(total) {
+            alert('You have send a form but you are offline. It will be submited when back online.');
+            alert(total+' form(s) have been locally stored'); 
+        }
+        afterSync: function(total) {
+            alert('All form have been submited. Total : '+total);
+        }
+    });
+});
+`````
+
 ### Requirements
 * jQuery 1.9+
 * A web server (such as apache)
