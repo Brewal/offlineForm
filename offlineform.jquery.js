@@ -2,8 +2,8 @@
  * offlineForm
  * 
  * @version 0.1.2
- * @example $('form.offline').offlineForm();
  * @author Brewal RENAULT http://oziolab.fr/
+ * @link https://github.com/Brewal/offlineForm
  * 
  * This is a jQuery plugin for synchronizing forms when navigator is
  * offline. If it is, forms will be stored into localStorage, until an online 
